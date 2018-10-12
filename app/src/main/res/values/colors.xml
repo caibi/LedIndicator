@@ -3,4 +3,18 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="black">#000000</color>       <!--标题文字颜色-->
+    <color name="title_text_color">#444444</color>       <!--标题文字颜色-->
+    <color name="text_color_large">#545454</color>       <!--文字颜色-->
+    <color name="home_color">#14C58E</color>       <!--主体颜色-->
+    <color name="line_color">#D9D8D8</color>       <!--分割线颜色-->
+    <color name="side_text_color">#555555</color>       <!--索引排序文字颜色-->
+    <color name="regist_protocal_text_color">#878787</color>       <!--注册同意协议文字颜色-->
+    <color name="main_botton_line_color">#BDBDBD</color>       <!--首页底部分割线-->
+    <color name="pop_bt_text_color">#0076FF</color>       <!--弹框按钮文字颜色-->
+    <color name="pop_bg_color">#E5F6F6F6</color>       <!--弹框背景颜色-->
+    <color name="erro_tips_color">#FA5454</color>       <!--弹框背景颜色-->
+    <color name="open_record_line">#ECECEC</color>       <!--开门记录线的颜色-->
+    <color name="open_record_color_bg">#85000000</color>       <!--开门记录Pop背景颜色-->
 </resources>

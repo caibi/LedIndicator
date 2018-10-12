@@ -1,43 +1,300 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="设置"
-            android:textSize="16sp"
-            android:textColor="#000000"
-            android:layout_centerInParent="true"
-            android:background="#ffffff"
-            />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_chooice"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:clickable="true"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#ffffff"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="选择图片"
-            android:textSize="18sp"
-            android:layout_marginLeft="20dp"
-            android:layout_centerVertical="true"
-            android:textColor="@color/colorAccent"
-            />
+        <com.wy.ledindicator.widget.TitleView
+            android:id="@+id/titleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-   </RelativeLayout>
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        />
-</LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rg_txt"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="17dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tv_wz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="文字："
+                android:layout_centerVertical="true"
+                android:textColor="@color/side_text_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/et_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/tv_wz"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                />
+
+        </RelativeLayout>
+
+
+
+        <RadioGroup
+            android:id="@+id/rg_or"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="方向："
+                android:textColor="@color/side_text_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="向左"
+                android:textColor="@color/home_color"
+                android:textSize="18sp"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="向右"
+                android:textColor="@color/home_color"
+                android:textSize="18sp"
+                />
+
+        </RadioGroup>
+
+        <RelativeLayout
+            android:id="@+id/rl_speed"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_sd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="滚动速度："
+                android:textColor="@color/side_text_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                />
+
+            <SeekBar
+                android:id="@+id/seekSpeed"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/tv_sd"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:progress="20"
+                android:max="100"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_front"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_zt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="字体："
+                android:textColor="@color/side_text_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                />
+
+            <Spinner
+                android:id="@+id/spanner_front"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tv_zt"
+                android:layout_centerVertical="true"
+
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_size"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_wzdx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="文字大小："
+                android:textColor="@color/side_text_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                />
+
+            <Spinner
+                android:id="@+id/spanner_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/tv_wzdx"
+                android:layout_centerVertical="true"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_txt_color"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_wzys"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="文字颜色："
+                android:layout_centerVertical="true"
+                android:textColor="@color/side_text_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <com.wy.ledindicator.widget.ColorPickerView
+                android:id="@+id/colorPick_txt"
+                android:layout_toRightOf="@+id/tv_wzys"
+                app:indicatorColor="#fff"
+                app:indicatorEnable="true"
+                app:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:visibility="visible"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                />
+
+
+        </RelativeLayout>
+
+        <RadioGroup
+            android:id="@+id/rg_bg"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tv_bj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:text="背景："
+                android:textColor="@color/side_text_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="颜色"
+                android:textColor="@color/home_color"
+                android:textSize="18sp"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="图片"
+                android:textColor="@color/home_color"
+                android:textSize="18sp"
+                />
+
+        </RadioGroup>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.wy.ledindicator.widget.ColorPickerView
+                android:id="@+id/colorPick_bg"
+                app:indicatorColor="#fff"
+                app:indicatorEnable="true"
+                app:orientation="horizontal"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="visible"
+                />
+
+            <ImageView
+                android:id="@+id/img_preview_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@mipmap/ic_launcher"
+                android:visibility="gone"
+                />
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

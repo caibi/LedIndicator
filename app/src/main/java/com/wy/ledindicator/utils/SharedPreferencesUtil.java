@@ -3,8 +3,13 @@ package com.wy.ledindicator.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
+import android.text.TextUtils;
 
+import com.wy.ledindicator.Constants;
 import com.wy.ledindicator.MyApplication;
+import com.wy.ledindicator.entity.Params;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Set;
@@ -133,4 +138,48 @@ public class SharedPreferencesUtil {
         }
         return null;
     }
+
+    /**
+     * @return      获取配置参数
+     */
+    public static Params getParams(){
+        String txt = read(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.TEXT,String.class,"默认文字");
+        int direction = read(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.DIRECTION,Integer.class,2);
+        int size = read(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.TEXT_SIZE,Integer.class,50);
+        String font = read(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.TEXT_font,String.class,"wryh.ttf");
+        int textColor = read(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.TEXT_COLOR,Integer.class,Color.BLACK);
+        int bgType = read(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.MAIN_BG_TYPE,Integer.class,1);
+        int bgColor = read(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.MAIN_COLOR_BG,Integer.class,Color.WHITE);
+        String picPath = read(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.MAIN_PIC_BG,String.class,"");
+        int speed = read(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.SPEED,Integer.class,20);
+
+        Params params = new Params(txt,direction,size,font,textColor,speed,bgType,bgColor,picPath);
+        return params;
+    }
+
+    /**
+     * @param params    存储配置参数
+     * @return
+     */
+    public static void putParams(Params params){
+        if(!TextUtils.isEmpty(params.getText()))
+        write(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.TEXT,params.getText());
+        if(params.getDirection()!=0)
+        write(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.DIRECTION,params.getDirection());
+        if(params.getSize()!=0)
+        write(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.TEXT_SIZE,params.getSize());
+        if(!TextUtils.isEmpty(params.getFont()))
+        write(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.TEXT_font,params.getFont());
+        if(params.getTextColor()!=0)
+        write(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.TEXT_COLOR,params.getTextColor());
+
+        write(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.MAIN_BG_TYPE,params.getType());
+        if(params.getBgColor()!=0)
+        write(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.MAIN_COLOR_BG,params.getBgColor());
+        if(!TextUtils.isEmpty(params.getPicPath()))
+        write(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.MAIN_PIC_BG,params.getPicPath());
+
+        write(Constants.ShareprefrencesParams.ALL_SP_NAME,Constants.ShareprefrencesParams.SPEED,params.getSpeed());
+    }
+
 }

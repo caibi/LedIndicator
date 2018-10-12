@@ -12,7 +12,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mApplication = this;
-        x.app().onCreate();
+        x.Ext.init(this);
         x.Ext.setDebug(Constants.isDebug);
     }
 

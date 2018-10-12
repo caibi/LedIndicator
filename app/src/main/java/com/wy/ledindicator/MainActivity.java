@@ -1,13 +1,22 @@
 package com.wy.ledindicator;
 
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 
+import com.wy.ledindicator.entity.Params;
+import com.wy.ledindicator.utils.FontManager;
+import com.wy.ledindicator.utils.SharedPreferencesUtil;
 import com.wy.ledindicator.widget.LoopTextView;
 
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
@@ -17,8 +26,10 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.loopTextView)
     LoopTextView mTextView;
 
+
     @Override
     public int setContentView() {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         return R.layout.activity_main;
     }
 
@@ -26,16 +37,18 @@ public class MainActivity extends BaseActivity {
     public void init() {
         ButterKnife.bind(this);
         initView();
+        new FontManager();      //初始化字体数据
     }
 
+
     private void initView() {
-        mTextView.setText("测试");
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        getPamrasAndRefreshUi();
         mTextView.startScroll();
     }
 
@@ -44,4 +57,35 @@ public class MainActivity extends BaseActivity {
         super.onPause();
         mTextView.stopScroll();
     }
+
+    @OnClick(R.id.loopTextView)
+    public void click(View v){
+        Intent intent = new Intent(this,SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 从SP中获取配置参数
+     */
+    public void getPamrasAndRefreshUi(){
+        Params params = SharedPreferencesUtil.getParams();
+
+        mTextView.setText(params.getText());
+        mTextView.setSpeed(params.getSpeed());
+        mTextView.setTextColor(params.getTextColor());
+        mTextView.setDirection(params.getDirection());
+        mTextView.setTextSize(params.getSize());
+
+        Typeface tf = Typeface.createFromAsset(getAssets(),
+                "fonts/"+params.getFont());
+        mTextView.setTypeface(tf);
+
+        if(params.getType()==1){
+            //颜色背景
+            rl_main.setBackgroundColor(params.getBgColor());
+        }else{
+            rl_main.setBackground(Drawable.createFromPath(params.getPicPath()));
+        }
+    }
+
 }

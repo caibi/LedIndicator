@@ -6,11 +6,29 @@
     android:layout_height="match_parent"
     >
 
-    <com.wy.ledindicator.widget.LoopTextView
-        android:id="@+id/loopTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textStyle="bold"
-        />
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            >
+
+            <com.wy.ledindicator.widget.LoopTextView
+                android:id="@+id/loopTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:singleLine="true"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                />
+        </RelativeLayout>
+
+    </HorizontalScrollView>
+
 </RelativeLayout>

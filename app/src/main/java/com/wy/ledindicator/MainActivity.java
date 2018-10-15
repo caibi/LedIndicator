@@ -3,8 +3,11 @@ package com.wy.ledindicator;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 
 
@@ -26,6 +29,9 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.loopTextView)
     LoopTextView mTextView;
 
+    @BindView(R.id.horizontalScrollView)
+    HorizontalScrollView horizontalScrollView;      //滚动的View
+
 
     @Override
     public int setContentView() {
@@ -42,7 +48,12 @@ public class MainActivity extends BaseActivity {
 
 
     private void initView() {
-
+        horizontalScrollView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return true;
+            }
+        });
     }
 
     @Override
@@ -76,9 +87,11 @@ public class MainActivity extends BaseActivity {
         mTextView.setDirection(params.getDirection());
         mTextView.setTextSize(params.getSize());
 
-        Typeface tf = Typeface.createFromAsset(getAssets(),
-                "fonts/"+params.getFont());
-        mTextView.setTypeface(tf);
+        if(!TextUtils.isEmpty(params.getFont())){
+            Typeface tf = Typeface.createFromAsset(getAssets(),
+                    "fonts/"+params.getFont());
+            mTextView.setTypeface(tf);
+        }
 
         if(params.getType()==1){
             //颜色背景

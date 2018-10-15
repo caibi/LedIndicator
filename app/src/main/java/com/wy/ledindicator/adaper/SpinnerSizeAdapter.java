@@ -43,22 +43,17 @@ public class SpinnerSizeAdapter extends BaseAdapter {
         if(convertView==null){
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_font,null);
             viewHodler = new ViewHodler();
-            viewHodler.line = convertView.findViewById(R.id.line);
             viewHodler.text = convertView.findViewById(R.id.text_front);
             convertView.setTag(viewHodler);
         }
         viewHodler = (ViewHodler) convertView.getTag();
 
         viewHodler.text.setText(sizes[position]);
-        viewHodler.text.setTextSize(Integer.valueOf(sizes[position]));
-        if(position==sizes.length-1){
-            viewHodler.line.setVisibility(View.GONE);
-        }
+//        viewHodler.text.setTextSize(Integer.valueOf(sizes[position]));
         return convertView;
     }
 
     public class ViewHodler{
         TextView text;
-        View line;
     }
 }

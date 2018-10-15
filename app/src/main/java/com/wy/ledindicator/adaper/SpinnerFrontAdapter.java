@@ -45,7 +45,6 @@ public class SpinnerFrontAdapter extends BaseAdapter {
         if(convertView==null){
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_font,null);
             viewHolder = new ViewHodler();
-            viewHolder.line = convertView.findViewById(R.id.line);
             viewHolder.text = convertView.findViewById(R.id.text_front);
             convertView.setTag(viewHolder);
         }
@@ -54,10 +53,6 @@ public class SpinnerFrontAdapter extends BaseAdapter {
         Typeface tf = Typeface.createFromAsset(((Activity)mContext).getAssets(),
                 "fonts/"+FontManager.getFont(position));
         viewHolder.text.setTypeface(tf);
-        viewHolder.line = convertView.findViewById(R.id.line);
-        if(position==27){
-            viewHolder.line.setVisibility(View.GONE);
-        }
         return convertView;
     }
 
@@ -72,6 +67,5 @@ public class SpinnerFrontAdapter extends BaseAdapter {
 
     public class ViewHodler{
         TextView text;
-        View line;
     }
 }

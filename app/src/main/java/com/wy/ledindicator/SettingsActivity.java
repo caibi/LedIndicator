@@ -7,9 +7,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -84,6 +86,8 @@ public class SettingsActivity extends BaseActivity  {
     TitleView mTitleView;       //自定义标题
 
 
+
+
     SpinnerFrontAdapter mFrontAdapter;
     SpinnerSizeAdapter mSizeAdapter;
     String[] sizes;
@@ -139,6 +143,8 @@ public class SettingsActivity extends BaseActivity  {
      * 初始化View
      */
     private void initView() {
+
+
 
         colorPickBg.setOnColorPickerChangeListener(new ColorPickerView.OnColorPickerChangeListener() {
             @Override

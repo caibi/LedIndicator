@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LedIndicator</string>
+    <string name="app_name">字幕滚屏</string>
 
     <string name="save">保存</string>
 </resources>

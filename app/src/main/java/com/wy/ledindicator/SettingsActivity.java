@@ -2,6 +2,7 @@ package com.wy.ledindicator;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -106,6 +107,7 @@ public class SettingsActivity extends BaseActivity  {
     @Override
     public void init() {
         ButterKnife.bind(this);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         initTitleView();
         initView();
     }

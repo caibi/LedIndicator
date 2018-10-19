@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity {
      */
     public void getPamrasAndRefreshUi(){
         Params params = SharedPreferencesUtil.getParams();
-
+        mTextView.clearData();
         mTextView.setText(params.getText());
         mTextView.setSpeed(params.getSpeed());
         mTextView.setTextColor(params.getTextColor());
